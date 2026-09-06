@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+node_modules/
+frontend/dist/
+backend/.venv/
+*.log
+.python-version
+.verify/
+.vercel/

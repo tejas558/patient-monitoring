@@ -1,0 +1,283 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Literal, Optional
+
+Kind = Literal["stable", "watch", "sepsis", "cardiac"]
+
+
+@dataclass
+class Baseline:
+    hr: float
+    hrv: float
+    spo2: float
+    temp: float
+    rr: float
+    sbp: float
+    dbp: float
+
+
+@dataclass
+class RosterEntry:
+    id: str
+    mrn: str
+    name: str
+    age: int
+    sex: Literal["F", "M"]
+    bed: str
+    condition: str
+    postop_day: Optional[int]
+    device: str
+    device_vendor: str
+    admit: str
+    allergies: str
+    battery: int
+    kind: Kind
+    progress: float
+    speed: float
+    baseline: Baseline
+    seed: int
+
+
+ROSTER: list[RosterEntry] = [
+    RosterEntry(
+        id="elena-voss",
+        mrn="00482119",
+        name="Elena Voss",
+        age=67,
+        sex="F",
+        bed="4W-12",
+        condition="Post-op colectomy · POD 2",
+        postop_day=2,
+        device="Philips Biosensor BX100",
+        device_vendor="Philips",
+        admit="2026-09-03",
+        allergies="Penicillin",
+        battery=86,
+        kind="sepsis",
+        progress=0.38,
+        speed=0.018,
+        baseline=Baseline(76, 42, 97, 36.8, 16, 128, 74),
+        seed=11,
+    ),
+    RosterEntry(
+        id="marcus-chen",
+        mrn="00319402",
+        name="Marcus Chen",
+        age=54,
+        sex="M",
+        bed="4W-07",
+        condition="HFrEF 30% · tele overlay",
+        postop_day=None,
+        device="Medtronic LINQ II",
+        device_vendor="Medtronic",
+        admit="2026-09-01",
+        allergies="NKDA",
+        battery=91,
+        kind="cardiac",
+        progress=0.22,
+        speed=0.011,
+        baseline=Baseline(88, 28, 96, 36.7, 18, 112, 68),
+        seed=23,
+    ),
+    RosterEntry(
+        id="mei-lin",
+        mrn="00773301",
+        name="Mei Lin",
+        age=83,
+        sex="F",
+        bed="4W-03",
+        condition="UTI · sepsis watch",
+        postop_day=None,
+        device="Masimo Radius PPG",
+        device_vendor="Masimo",
+        admit="2026-09-04",
+        allergies="Sulfa",
+        battery=74,
+        kind="sepsis",
+        progress=0.58,
+        speed=0.010,
+        baseline=Baseline(82, 31, 96, 37.1, 18, 134, 78),
+        seed=41,
+    ),
+    RosterEntry(
+        id="aisha-rahman",
+        mrn="00288144",
+        name="Aisha Rahman",
+        age=62,
+        sex="F",
+        bed="4W-09",
+        condition="CAP · O2 2L NC",
+        postop_day=None,
+        device="Masimo MightySat Rx",
+        device_vendor="Masimo",
+        admit="2026-09-02",
+        allergies="NKDA",
+        battery=81,
+        kind="sepsis",
+        progress=0.12,
+        speed=0.007,
+        baseline=Baseline(84, 36, 94, 37.4, 20, 126, 72),
+        seed=7,
+    ),
+    RosterEntry(
+        id="james-okonkwo",
+        mrn="00510288",
+        name="James Okonkwo",
+        age=78,
+        sex="M",
+        bed="4W-05",
+        condition="COPD exacerbation",
+        postop_day=None,
+        device="Teladoc RPM kit · pulse ox",
+        device_vendor="Teladoc",
+        admit="2026-08-31",
+        allergies="Codeine",
+        battery=63,
+        kind="watch",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(92, 24, 91, 36.9, 22, 138, 82),
+        seed=19,
+    ),
+    RosterEntry(
+        id="robert-hale",
+        mrn="00177620",
+        name="Robert Hale",
+        age=71,
+        sex="M",
+        bed="4W-11",
+        condition="New AFib · rate control",
+        postop_day=None,
+        device="Apple Watch Ultra 2",
+        device_vendor="Apple Health",
+        admit="2026-09-04",
+        allergies="NKDA",
+        battery=52,
+        kind="watch",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(98, 18, 97, 36.6, 16, 118, 76),
+        seed=29,
+    ),
+    RosterEntry(
+        id="priya-nair",
+        mrn="00821003",
+        name="Priya Nair",
+        age=41,
+        sex="F",
+        bed="4W-02",
+        condition="Postpartum day 1 · stable",
+        postop_day=1,
+        device="Apple Watch Series 10",
+        device_vendor="Apple Health",
+        admit="2026-09-05",
+        allergies="Latex",
+        battery=94,
+        kind="stable",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(74, 48, 99, 36.7, 14, 118, 70),
+        seed=3,
+    ),
+    RosterEntry(
+        id="hannah-brooks",
+        mrn="00644190",
+        name="Hannah Brooks",
+        age=29,
+        sex="F",
+        bed="4W-14",
+        condition="Laparoscopic appendectomy · POD 0",
+        postop_day=0,
+        device="Philips Biosensor BX100",
+        device_vendor="Philips",
+        admit="2026-09-05",
+        allergies="NKDA",
+        battery=88,
+        kind="stable",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(68, 55, 99, 36.6, 14, 122, 72),
+        seed=13,
+    ),
+    RosterEntry(
+        id="tom-alvarez",
+        mrn="00913077",
+        name="Tom Alvarez",
+        age=45,
+        sex="M",
+        bed="4W-08",
+        condition="Post-CABG · POD 3",
+        postop_day=3,
+        device="Medtronic LINQ II",
+        device_vendor="Medtronic",
+        admit="2026-09-02",
+        allergies="Iodine",
+        battery=79,
+        kind="stable",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(72, 38, 97, 36.8, 15, 110, 64),
+        seed=17,
+    ),
+    RosterEntry(
+        id="david-park",
+        mrn="00200918",
+        name="David Park",
+        age=58,
+        sex="M",
+        bed="4W-06",
+        condition="DM2 · cellulitis, home RPM",
+        postop_day=None,
+        device="Teladoc Chronic Care kit",
+        device_vendor="Teladoc",
+        admit="2026-08-28",
+        allergies="NKDA",
+        battery=70,
+        kind="stable",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(78, 40, 98, 36.9, 16, 132, 80),
+        seed=31,
+    ),
+    RosterEntry(
+        id="sofia-berg",
+        mrn="00440012",
+        name="Sofia Berg",
+        age=36,
+        sex="F",
+        bed="4W-01",
+        condition="Asthma · observation",
+        postop_day=None,
+        device="Masimo MightySat Rx",
+        device_vendor="Masimo",
+        admit="2026-09-05",
+        allergies="Aspirin",
+        battery=96,
+        kind="stable",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(70, 52, 98, 36.5, 15, 120, 74),
+        seed=37,
+    ),
+    RosterEntry(
+        id="william-frost",
+        mrn="00155280",
+        name="William Frost",
+        age=69,
+        sex="M",
+        bed="4W-10",
+        condition="THA · POD 1 · pain protocol",
+        postop_day=1,
+        device="Philips Biosensor BX100",
+        device_vendor="Philips",
+        admit="2026-09-04",
+        allergies="Morphine",
+        battery=84,
+        kind="watch",
+        progress=0.0,
+        speed=0.0,
+        baseline=Baseline(80, 33, 96, 37.0, 16, 142, 84),
+        seed=43,
+    ),
+]
