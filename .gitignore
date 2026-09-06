@@ -10,3 +10,4 @@ backend/.venv/
 .python-version
 .verify/
 .vercel/
+.vercel
